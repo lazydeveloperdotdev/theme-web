@@ -109,10 +109,11 @@
         localStorage.setItem("data-theme", themeData);
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
+    const setLastTheme = () => {
         let themeData = localStorage.getItem("data-theme");
         document.documentElement.setAttribute("data-theme", themeData);
-    });
+    }
+    document.addEventListener("DOMContentLoaded", setLastTheme);
 </script>
 </body>
 </html>

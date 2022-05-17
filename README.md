@@ -14,39 +14,39 @@ There are different ways to enable theme support to your web and/or react applic
 Add `data-theme` attribute to the `<html>` tag to set the theme by `default` (_not mandatory, uses properties from `:root`, if not specified_)
 ```html
 <html data-theme="light-green">
-    <head>
-        <title>My website</title>
-        <link rel="stylesheet" href="styles.css" />
-    </head>
-    <body>
-        <div>
-            <div>
-                <h2>This is some text to preview.</h2>
-                <button>Action Button</button>
-            </div>
-            <label for="light-green">
-                <input id="light-green" value="" type="radio" name="theme" onchange="toggleTheme(this.id)"/>
-                Light (Green) theme
-            </label>
+<head>
+    <title>My website</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div>
+    <div>
+        <h2>This is some text to preview.</h2>
+        <button>Action Button</button>
+    </div>
+    <label for="light-green">
+        <input id="light-green" value="" type="radio" name="theme" onchange="toggleTheme(this.id)"/>
+        Light (Green) theme
+    </label>
 
-            <label for="light-blue">
-                <input id="light-blue" value="" type="radio" name="theme" onchange="toggleTheme(this.id)"/>
-                Light (Blue) theme
-            </label>
+    <label for="light-blue">
+        <input id="light-blue" value="" type="radio" name="theme" onchange="toggleTheme(this.id)"/>
+        Light (Blue) theme
+    </label>
 
-            <label for="dark-green">
-                <input id="dark-green" type="radio" name="theme"
-                    onchange="toggleTheme(this.id)"/>
-                Dark (Green) theme
-            </label>
+    <label for="dark-green">
+        <input id="dark-green" type="radio" name="theme"
+               onchange="toggleTheme(this.id)"/>
+        Dark (Green) theme
+    </label>
 
-            <label for="dark-blue">
-                <input id="dark-blue" type="radio" name="theme" onchange="toggleTheme(this.id)"/>
-                Dark (Blue) theme
-            </label>
+    <label for="dark-blue">
+        <input id="dark-blue" type="radio" name="theme" onchange="toggleTheme(this.id)"/>
+        Dark (Blue) theme
+    </label>
 
-        </div>
-    </body>
+</div>
+</body>
 </html>
 ```
 In react, replace  `for` with `htmlFor` and `onchange` event with `onChange={(event) => toggleTheme(event.target.id)}`
@@ -141,9 +141,7 @@ const setLastTheme = () => {
     document.documentElement.setAttribute("data-theme", themeData);
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    setLastTheme(); 
-});
+document.addEventListener("DOMContentLoaded", setLastTheme);
 ```
 
 Check the `radio` button with last selected theme.
