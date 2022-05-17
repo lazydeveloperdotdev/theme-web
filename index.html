@@ -1,0 +1,118 @@
+<html data-theme="light">
+<head>
+    <title>My website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root { /* Default theme */
+            --bg: #ffffff;
+            --text: #000000;
+            --accent: seagreen;
+        }
+
+        [data-theme='light-green'] {
+            --bg: #ffffff;
+            --text: #000000;
+            --accent: seagreen;
+        }
+
+        [data-theme='light-blue'] {
+            --bg: #ffffff;
+            --text: #000000;
+            --accent: royalblue;
+        }
+
+        [data-theme='dark-green'] {
+            --bg: #252545;
+            --text: #ffffff;
+            --accent: seagreen;
+        }
+
+        [data-theme='dark-blue'] {
+            --bg: #252545;
+            --text: #ffffff;
+            --accent: royalblue;
+        }
+
+        html, body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button {
+            display: block;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        label {
+            display: block;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <div>
+        <h2>This is some text to preview.</h2>
+        <button>Action Button</button>
+    </div>
+    <label for="light-green">
+        <input id="light-green" value="" type="radio" name="theme" onchange="toggleTheme(this.id)"/>
+        Light (Green) theme
+    </label>
+
+    <label for="light-blue">
+        <input id="light-blue" value="" type="radio" name="theme" onchange="toggleTheme(this.id)"/>
+        Light (Blue) theme
+    </label>
+
+    <label for="dark-green">
+        <input id="dark-green" type="radio" name="theme"
+               onchange="toggleTheme(this.id)"/>
+        Dark (Green) theme
+    </label>
+
+    <label for="dark-blue">
+        <input id="dark-blue" type="radio" name="theme" onchange="toggleTheme(this.id)"/>
+        Dark (Blue) theme
+    </label>
+
+</div>
+
+<script>
+
+    const setCurrentThemeCheck = () => {
+        let ele = document.getElementsByName("theme");
+        let currentTheme = localStorage.getItem("data-theme") || "light-green";
+
+        ele.forEach(e => {
+            if (e.id === currentTheme) e.checked = true;
+        })
+    }
+
+    setCurrentThemeCheck();
+
+    const toggleTheme = (themeData) => {
+        document.documentElement.setAttribute("data-theme", themeData);
+        // Add this line
+        localStorage.setItem("data-theme", themeData);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let themeData = localStorage.getItem("data-theme");
+        document.documentElement.setAttribute("data-theme", themeData);
+    });
+</script>
+</body>
+</html>
